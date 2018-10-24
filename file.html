@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>练习小球</title>
+	<style type="text/css">
+		#aa,#bb,#cc{
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background-color:hotpink;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div id='aa'></div>
+	<div id='bb'></div>
+	<div id='cc'></div>
+</body>
+<script type="text/javascript">
+		function move(name,position) {
+			return new Promise((resolve,reject)=>{
+				let a=0;
+				let b=setInterval(function(){
+					a+=5;
+					name.style.left=a+'px';
+					if (a>=position) {
+						clearInterval(b);
+						a=position+'px';
+						resolve('')
+					}
+				},20);
+			})
+			
+		}
+		// move(aa,500).then(
+		// 	data=>{move(bb,500).then(
+		// 		data=>{move(cc,500)
+		// 	})
+		// 	})
+
+		// move(aa,500).then(
+		// 	data=>{
+		// 		return move(bb,500)
+		// 	}).then(
+		// 	data=>{
+		// 		move(cc,500)
+		// 	})
+		async function dd(){
+			await move(aa,500)
+			await move(bb,500)
+			await move(cc,500)
+		}
+dd()
+
+</script>
+</html>
